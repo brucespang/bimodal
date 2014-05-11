@@ -1,0 +1,28 @@
+html, body {
+		height: 100%;
+}
+
+.container {
+		width: 1230px;
+		padding: 0;
+}
+
+a.navbar-brand {
+		color: #000;
+}
+
+.page-wrap {
+		min-height: 100%;
+		margin-bottom: -70px;
+}
+
+.footer, .page-wrap:after {
+		height: 50px;
+}
+
+footer {
+		color: #777;
+		border-top: 1px solid #e5e5e5;
+		padding: 25px 0;
+		text-align: center;
+}

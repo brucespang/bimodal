@@ -1,0 +1,28 @@
+---
+layout: default
+title: Convergence Times
+permalink: /convergence/
+image: /img/convergence.png
+scripts: ["/js/highcharts.js", "/js/convergence.js"]
+---
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div class="row">
+	<div class="col-md-4">
+		<span>Number of rounds</span>
+		<strong id="R_val"></strong>
+		<div id="R"></div>
+	</div>
+
+	<div class="col-md-4">
+		<span>P(message loss) &le;</span>
+		<strong id="e_val"></strong>
+		<div id="e"></div>
+	</div>
+
+	<div class="col-md-4">
+		<span>% of processes who received initial broadcast</span>
+		<strong id="p_0_val"></strong>
+		<div id="p_0"></div>
+	</div>
+</div>

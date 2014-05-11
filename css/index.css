@@ -1,0 +1,19 @@
+.visualizations {
+		padding: 0;
+}
+
+.visualizations li {
+		list-style-type: none;
+		display: inline;
+		margin-right: 10px;
+}
+
+.visualizations li:last-child {
+		margin-right: 0;
+}
+
+.visualizations li img {
+		border: 1px solid #000;
+		width: 400px;
+		height: 300px;
+}

@@ -1,0 +1,49 @@
+---
+layout: default
+permalink: /simulation/
+title: Gossip Simulation
+image: /img/simulation.png
+styles: ["/css/simulation.css"]
+scripts: ["/js/d3.v3.min.js", "/js/simulation.js"]
+---
+
+<div class="col-md-7">
+	<div id="container"></div>
+</div>
+<div class="meta col-md-4">
+	<div class="Page Header">
+		<h1>Gossip Simulation</h1>
+	</div>
+
+	<div class="round">
+		<strong>Round</strong>
+		<span>0</span>
+	</div>
+
+	<div class="num">
+		<strong>Number Infected</strong>
+		<span>1</span>
+	</div>
+
+	<div class="controls">
+		<div>
+			<strong>Gossip interval</strong>
+			<span id="speed_val"></span>ms
+			<div id="speed"></div>
+		</div>
+
+		<div>
+			<strong>P(message loss) =</strong>
+			<span id="e_val"></span>
+			<div id="e"></div>
+		</div>
+
+		<div>
+			<strong># of initial processes</strong>
+			<span id="n_0_val"></span>
+			<div id="n_0"></div>
+		</div>
+
+		<a href="#" class="btn btn-default btn-success reset">Reset</a>
+	</div>
+</div>

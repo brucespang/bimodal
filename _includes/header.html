@@ -1,0 +1,18 @@
+<header class="navbar navbar-static-top" role="banner">
+	<div class="container">
+		<div class="navbar-header">
+			<a href="{{ "/" | prepend: site.baseurl}}" class="navbar-brand">Bimodal Multicast</a>
+		</div>
+
+		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+			<ul class="nav navbar-nav">
+				{% for page in site.pages order:ascending %}
+				{% if page.url != "/" %}
+				<li><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+				{% endif %}
+				{% endfor %}
+				<li><a href="{{ site.baseurl }}/Birman99.pdf">Paper</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
