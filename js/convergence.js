@@ -36,7 +36,7 @@ $(function () {
 				// N = # of processes
 				var N = 100;
 				// R = # of rounds
-				var R = parseInt($("#R").slider("value"));
+				var R = parseInt(Math.pow(10, $("#R").slider("value")));
 				$("#R_val").text(R)
 				// B = P(gossip to another process)
 				var B = 1.0/N;
@@ -91,9 +91,10 @@ $(function () {
 
 		$('#R').slider({
 				slide: generate_chart,
-				value: 25,
-				min: 8,
-				max: 3000
+				value: 1.397,
+				min: 0.01,
+				max: 3.6,
+				step: 0.1
 		});
 		$('#e').slider({
 				slide: generate_chart,
