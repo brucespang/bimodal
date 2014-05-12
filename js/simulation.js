@@ -178,5 +178,4 @@ $('#n_0').slider({
 });
 $("#n_0_val").text($('#n_0').slider("value"))
 
-$('.reset').on('click', animate);
-animate()
+$('.start').on('click', animate);
