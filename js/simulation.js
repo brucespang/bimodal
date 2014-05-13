@@ -68,49 +68,51 @@ Simulation.prototype.infected = function(d) {
 }
 
 Simulation.prototype.tick = function() {
+    var self = this;
+
 		this.svg.selectAll("line").remove()
 
-		// for infected this.nodes, do gossip
-    var self = this;
+		// for infected nodes, do gossip
 		this.nodes.map(function(node) {
-				if (node.infected) {
+				if (0 < node.infected && node.infected < self.round) {
 						var target;
 						do {
 								target = self.nodes.random()
 						} while (target == node)
-						if (0 < node.infected && node.infected < self.round) {
-								if (target.infected != 0) return;
 
-								var line = self.svg.append("line")
-										.attr("x1", node.cx)
-										.attr("y1", node.cy)
-										.attr("x2", target.cx)
-										.attr("y2", target.cy)
-										.attr("stroke-width", 4)
+						if (target.infected == 0) {
+						    var line = self.svg.append("line")
+								    .attr("x1", node.cx)
+								    .attr("y1", node.cy)
+								    .attr("x2", target.cx)
+								    .attr("y2", target.cy)
+								    .attr("stroke-width", 4)
 
-								var lost = Math.random() < self.e;
-								if (lost) {
-										line.style("marker-end", "url(#end-arrow-broken)")
-												.attr("stroke", "#f00")
-								} else {
-										target.infected = self.round;
-										line.style("marker-end", "url(#end-arrow)")
-												.attr("stroke", "#000")
-								}
-						}
+						    var lost = Math.random() < self.e;
+						    if (lost) {
+								    line.style("marker-end", "url(#end-arrow-broken)")
+										    .attr("stroke", "#f00")
+						    } else {
+								    target.infected = self.round;
+								    line.style("marker-end", "url(#end-arrow)")
+										    .attr("stroke", "#000")
+						    }
+            }
 				}
 		})
 		this.circle.classed("infected", this.infected)
-		this.circle.classed("new", function(d) { return this.round != 1 && d.infected == this.round })
+		this.circle.classed("new", function(d) {
+        return self.round != 1 && d.infected == self.round
+    })
 		this.round += 1;
 
 		$('.round span').text(this.round)
 
-		var num_infected = this.nodes.filter(this.infected).length;
+		var num_infected = this.nodes.filter(function(d) { return self.infected(d) }).length;
 		$('.num span').text(num_infected)
 
 		if(num_infected == this.nodes.length) {
-				console.log("done in " + this.round + " this.rounds")
+				console.log("done in " + self.round + " rounds")
         this.stop()
 		}
 }
@@ -142,7 +144,7 @@ Simulation.prototype.resume = function() {
 		this.running = true;
 
     var self = this;
-		setInterval(function() { self.tick() }, this.speed)
+		this.timer = setInterval(function() { self.tick() }, this.speed)
 }
 
 $('#speed').slider({
