@@ -4,7 +4,9 @@
 }
 
 .node {
-		fill: #000;
+		fill: #fff;
+    stroke: #000;
+    stroke-width: 4px;
 }
 
 .infected {
