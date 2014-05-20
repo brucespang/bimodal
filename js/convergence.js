@@ -18,7 +18,7 @@ $(function () {
 								text: '% of processes'
 						},
 						min: 0,
-						max: 1
+						max: 100
 				},
 				series: [
 						{
@@ -75,12 +75,12 @@ $(function () {
 						var k_lo = r_lo[t]*(1-Math.pow(q_lo, s_lo[t]))
 						s_lo[t+1] = s_lo[t] + k_lo;
 						r_lo[t+1] = r_lo[t] - k_lo;
-						p_lo[t+1] = s_lo[t+1]/N;
+						p_lo[t+1] = 100*s_lo[t+1]/N;
 
 						var k_hi = r_hi[t]*(1-Math.pow(q_hi, s_hi[t]))
 						s_hi[t+1] = s_hi[t] + k_hi;
 						r_hi[t+1] = r_hi[t] - k_hi;
-						p_hi[t+1] = s_hi[t+1]/N;
+						p_hi[t+1] = 100*s_hi[t+1]/N;
 				}
 
 				console.log(chart)
@@ -93,7 +93,7 @@ $(function () {
 				slide: generate_chart,
 				value: 1.397,
 				min: 0.01,
-				max: 3.6,
+				max: 4.9365,
 				step: 0.1
 		});
 		$('#e').slider({
